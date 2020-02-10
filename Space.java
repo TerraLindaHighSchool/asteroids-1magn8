@@ -31,6 +31,7 @@ public class Space extends World
 
         Explosion.initializeImages();
         ProtonWave.initializeImages();
+        paintStars(300);
     }
     
     /**
@@ -44,9 +45,25 @@ public class Space extends World
             int x = Greenfoot.getRandomNumber(getWidth()/2);
             int y = Greenfoot.getRandomNumber(getHeight()/2);
             addObject(new Asteroid(), x, y);
-        }
+
     }
-    
+}
+    private void paintStars(int count)
+    {
+    GreenfootImage background = getBackground();
+    for (int i=0; i < count + 1; i++)
+        {
+        int x = Greenfoot.getRandomNumber ( getWidth() );
+        int y = Greenfoot.getRandomNumber ( getHeight() );
+        int color1 = 150 - Greenfoot.getRandomNumber (120);
+        int color2 = color1 - Greenfoot.getRandomNumber (20);
+        int color3 = color1 + Greenfoot.getRandomNumber (20);
+        background.setColorAt(x,y, new Color(color1,color2,color3));
+        int size1 = 3 - Greenfoot.getRandomNumber(2);
+        int size2 = 3 - Greenfoot.getRandomNumber(2);
+        background.fillOval(x, y, size1, size2);
+    }
+}
     /**
      * This method is called when the game is over to display the final score.
      */
