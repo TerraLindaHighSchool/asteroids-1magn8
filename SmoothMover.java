@@ -16,7 +16,7 @@ import greenfoot.*;
 public abstract class SmoothMover extends Actor
 {
     private Vector velocity;
-    
+  
     private double exactX;
     private double exactY;
     
@@ -31,6 +31,7 @@ public abstract class SmoothMover extends Actor
     public SmoothMover(Vector velocity)
     {
         this.velocity = velocity;
+        addToVelocity(new Vector(180, .1));
     }
     
     /**

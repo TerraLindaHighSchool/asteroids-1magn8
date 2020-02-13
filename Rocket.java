@@ -1,13 +1,13 @@
+
 import greenfoot.*;
 
 /**
  * A rocket that can be controlled by the arrowkeys: up, left, right.
  * The gun is fired by hitting the 'space' key. 'z' releases a proton wave.
  * 
- * @author Poul Henriksen
- * @author Michael Kölling
+ * @author Zachary Chiu
  * 
- * @version 1.1
+ * 2.11.20
  */
 public class Rocket extends SmoothMover
 {
@@ -34,6 +34,7 @@ public class Rocket extends SmoothMover
     {
         checkKeys();
         reloadDelayCount++;
+        move();
     }
     
     /**
@@ -45,8 +46,31 @@ public class Rocket extends SmoothMover
         {
             fire();
         }
+        if (Greenfoot.isKeyDown("left"))
+        {
+            turn(-5);
+        }
+        if (Greenfoot.isKeyDown("right"))
+        {  
+            turn(5);
+        }
+        if (Greenfoot.isKeyDown("up"))
+        {
+            move(2);
+        }
+        ignite(Greenfoot.isKeyDown("up"));
     }
-    
+public void ignite (boolean boosterOn)
+{
+        if (boosterOn)
+        {
+           setImage ("rocketWithThrust.png");  
+        }
+        else
+        {
+            setImage ("rocket.png");
+        }
+}
     /**
      * Fire a bullet if the gun is ready.
      */
@@ -59,6 +83,5 @@ public class Rocket extends SmoothMover
             bullet.move ();
             reloadDelayCount = 0;
         }
-    }
-    
+    } 
 }
