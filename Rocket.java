@@ -35,6 +35,7 @@ public class Rocket extends SmoothMover
         checkKeys();
         reloadDelayCount++;
         move();
+        checkCollision();
     }
     
     /**
@@ -60,8 +61,8 @@ public class Rocket extends SmoothMover
         }
         ignite(Greenfoot.isKeyDown("up"));
     }
-public void ignite (boolean boosterOn)
-{
+    public void ignite (boolean boosterOn)
+    {
         if (boosterOn)
         {
            setImage ("rocketWithThrust.png");  
@@ -70,7 +71,7 @@ public void ignite (boolean boosterOn)
         {
             setImage ("rocket.png");
         }
-}
+    }
     /**
      * Fire a bullet if the gun is ready.
      */
@@ -84,4 +85,13 @@ public void ignite (boolean boosterOn)
             reloadDelayCount = 0;
         }
     } 
+    private void checkCollision()
+    {
+       if( getOneIntersectingObject(Asteroid.class) != null) 
+       {
+           World world = getWorld();
+           world.addObject(new Explosion(),getX(),getY());
+           world.removeObject(this);
+           }
+    }
 }
