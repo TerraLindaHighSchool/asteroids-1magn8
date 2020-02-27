@@ -23,6 +23,7 @@ public abstract class SmoothMover extends Actor
     public SmoothMover()
     {
         this(new Vector());
+        addToVelocity(new Vector(180, .1));
     }
     
     /**
@@ -31,9 +32,8 @@ public abstract class SmoothMover extends Actor
     public SmoothMover(Vector velocity)
     {
         this.velocity = velocity;
-        addToVelocity(new Vector(180, .1));
+        
     }
-    
     /**
      * Move in the direction of the velocity vector. This simulates movement in one 
      * time unit (dt==1). Wrap around to the opposite edge of the screen if moving out of the world.
@@ -100,7 +100,9 @@ public abstract class SmoothMover extends Actor
     public void addToVelocity(Vector boost) 
     {
         velocity.add(boost);
-    }
+    
+
+    }   
     
     /**
      * Accelerate the speed of this mover by the given factor. (Factors less than 1 will

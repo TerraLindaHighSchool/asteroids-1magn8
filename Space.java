@@ -47,7 +47,7 @@ public class Space extends World
             addObject(new Asteroid(), x, y);
 
     }
-}
+    }
     private void paintStars(int count)
     {
     GreenfootImage background = getBackground();
@@ -63,13 +63,22 @@ public class Space extends World
         int size2 = 3 - Greenfoot.getRandomNumber(2);
         background.fillOval(x, y, size1, size2);
     }
-}
+    }
     /**
      * This method is called when the game is over to display the final score.
      */
     public void gameOver() 
     {
-        // TODO: show the score board here. Currently missing.
+        int x=getWidth()/2;
+        int y=getHeight()/2;
+        int currentScore=scoreCounter.getValue();
+        addObject(new ScoreBoard(currentScore),x,y);
+     
     }
-
+    public void updateScore(int addToScore)
+    {
+        scoreCounter.add(addToScore);
+    }
 }
+
+
