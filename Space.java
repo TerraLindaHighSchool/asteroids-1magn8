@@ -9,42 +9,43 @@ import greenfoot.*;
 public class Space extends World
 {
     private Counter scoreCounter;
-    private int startAsteroids = 3;
+    private int startBlades = 3;
 
     /**
      * Create the space and all objects within it.
      */
     public Space() 
     {
-        super(600, 500, 1);
+        super(1150, 800, 1);
         GreenfootImage background = getBackground();
         background.setColor(Color.BLACK);
         background.fill();
         
-        Rocket rocket = new Rocket();
-        addObject(rocket, getWidth()/2 + 100, getHeight()/2);
+        Alien alien = new Alien();
+        addObject(alien, getWidth()/2 + 100, getHeight()/2);
         
-        addAsteroids(startAsteroids);
+        addBlades(startBlades);
         
         scoreCounter = new Counter("Score: ");
-        addObject(scoreCounter, 60, 480);
+        addObject(scoreCounter, 60, 780);
 
         Explosion.initializeImages();
         ProtonWave.initializeImages();
         paintStars(300);
+       
     }
     
     /**
      * Add a given number of asteroids to our world. Asteroids are only added into
      * the left half of the world.
      */
-    private void addAsteroids(int count) 
+    private void addBlades(int count) 
     {
         for(int i = 0; i < count; i++) 
         {
             int x = Greenfoot.getRandomNumber(getWidth()/2);
             int y = Greenfoot.getRandomNumber(getHeight()/2);
-            addObject(new Asteroid(), x, y);
+            addObject(new Blade(), x, y);
 
     }
     }

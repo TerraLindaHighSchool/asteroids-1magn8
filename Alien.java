@@ -9,20 +9,20 @@ import greenfoot.*;
  * 
  * 2.11.20
  */
-public class Rocket extends SmoothMover
+public class Alien extends SmoothMover
 {
     private static final int gunReloadTime = 5;         // The minimum delay between firing the gun.
 
     private int reloadDelayCount;               // How long ago we fired the gun the last time.
     private int waveCount;
     
-    private GreenfootImage rocket = new GreenfootImage("rocket.png");    
-    private GreenfootImage rocketWithThrust = new GreenfootImage("rocketWithThrust.png");
+    private GreenfootImage Alien = new GreenfootImage("Alien.png");    
+    private GreenfootImage Alienmove = new GreenfootImage("AlienMove.png");
 
     /**
      * Initialise this rocket.
      */
-    public Rocket()
+    public Alien()
     {
         reloadDelayCount = 5;
     }
@@ -69,12 +69,12 @@ public class Rocket extends SmoothMover
     {
         if (boosterOn)
         {
-           setImage ("rocketWithThrust.png");  
+           setImage ("AlienMove.png");  
            addToVelocity(new Vector(getRotation(), 0.3));
         }
         else
         {
-            setImage ("rocket.png");
+            setImage ("Alien.png");
         }
     }
     /**
@@ -87,7 +87,7 @@ public class Rocket extends SmoothMover
             Bullet bullet = new Bullet (getVelocity(), getRotation());
             getWorld().addObject (bullet, getX(), getY());
             bullet.move ();
-            reloadDelayCount = 0;
+            reloadDelayCount = 2;
         }
     } 
     private void checkCollision()

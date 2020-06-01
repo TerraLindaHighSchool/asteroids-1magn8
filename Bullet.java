@@ -3,8 +3,7 @@ import greenfoot.*;
 /**
  * A bullet that can hit asteroids.
  * 
- * @author Poul Henriksen
- * @author Michael Kölling
+ * @author Zachary Chiu
  */
 public class Bullet extends SmoothMover
 {
@@ -43,21 +42,35 @@ public class Bullet extends SmoothMover
         else {
             life--;
             move();
-            checkAsteroidHit();
+            checkBladeHit();
+            checkSpacemanHit();
         }
     }
     
     /**
-     * Check whether we have hit an asteroid.
+     * Check whether we have hit a Blade
      */
-    private void checkAsteroidHit()
+    private void checkBladeHit()
     {
-        Asteroid asteroid = (Asteroid) getOneIntersectingObject(Asteroid.class);
-        if (asteroid != null)
+        Blade blade = (Blade) getOneIntersectingObject(Blade.class);
+        if (blade != null)
         {
             ((Space)getWorld()).updateScore(10);
             getWorld().removeObject(this);
-            asteroid.hit(damage);
+            blade.hit(damage);
+        }
+    }
+    /**
+     * Check whether we have hit a Spaceman
+     */
+    private void checkSpacemanHit()
+    {
+        Spaceman spaceman = (Spaceman) getOneIntersectingObject(Spaceman.class);
+        if (spaceman != null)
+        {
+            ((Space)getWorld()).updateScore(10);
+            getWorld().removeObject(this);
+            spaceman.hit(damage);
         }
     }
 }
