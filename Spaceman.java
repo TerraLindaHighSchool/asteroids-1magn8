@@ -13,7 +13,9 @@ public class Spaceman extends SmoothMover
     /** When the stability reaches 0 the asteroid will explode */
     private int stability;
     private GreenfootImage Spaceman = new GreenfootImage ("Spaceman.png");
-
+    private int minShotDelay = 40;
+    private int maxShotDelay = 160;
+    private int shotTimer = minShotDelay;
     /**
      * Create an asteroid with default size and random direction of movement.
      */
@@ -43,6 +45,8 @@ public class Spaceman extends SmoothMover
     public void act()
     {         
         move();
+        shootRandomly();
+        
     }
 
     /**
@@ -66,7 +70,7 @@ public class Spaceman extends SmoothMover
         return stability;
     }
   /**
-     * Hit this asteroid dealing the given amount of damage.
+     * Hit this spaceman dealing the given amount of damage.
      */
     public void hit(int damage) 
     {
@@ -75,6 +79,15 @@ public class Spaceman extends SmoothMover
         {
             
         }
+    }
+    public void shootRandomly()
+    {
+      if (shotTimer == 0)
+        {
+            getWorld().addObject(new BadBullet(), getX(), getY());
+            shotTimer = minShotDelay+Greenfoot.getRandomNumber(1+maxShotDelay-minShotDelay);
+        }
+        else shotTimer--;
     }
 }
     

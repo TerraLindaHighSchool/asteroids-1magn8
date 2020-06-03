@@ -10,7 +10,7 @@ public class Space extends World
 {
     private Counter scoreCounter;
     private int startBlades = 3;
-
+    private Counter healthCounter;
     /**
      * Create the space and all objects within it.
      */
@@ -28,7 +28,10 @@ public class Space extends World
         
         scoreCounter = new Counter("Score: ");
         addObject(scoreCounter, 60, 780);
-
+        
+        healthCounter = new Counter("Health: ");
+        addObject(healthCounter, 1000, 780);
+        
         Explosion.initializeImages();
         ProtonWave.initializeImages();
         paintStars(300);
@@ -80,6 +83,15 @@ public class Space extends World
     {
         scoreCounter.add(addToScore);
     }
+    public void spawnProng(int score)
+    {
+        if (score >= 20)
+        {
+            int x = Greenfoot.getRandomNumber(getWidth());
+            int y = Greenfoot.getRandomNumber(getHeight());
+            addObject( new Prong(), x, y);
+    }
+}
 }
 
 

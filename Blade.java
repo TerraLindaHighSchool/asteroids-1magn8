@@ -19,7 +19,7 @@ public class Blade extends SmoothMover
      */
     public Blade()
     {
-        this(50);
+      this(50);
     }
     
     /**

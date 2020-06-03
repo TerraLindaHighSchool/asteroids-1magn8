@@ -8,10 +8,9 @@ import greenfoot.*;
  * This version implements wrap-around movement: when the actor moves out of the world at one
  * side, it enters it again at the opposite edge.
  * 
- * @author Poul Henriksen
- * @author Michael Kölling
+ * @Zachary Chiu
  * 
- * @version 2.3
+ * @6-3-20
  */
 public abstract class SmoothMover extends Actor
 {
