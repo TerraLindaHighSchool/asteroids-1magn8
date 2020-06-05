@@ -14,7 +14,7 @@ public class Prong extends SmoothMover
     private int stability;
     private GreenfootImage Spaceman = new GreenfootImage ("Spaceman.png");
     private int minShotDelay = 40;
-    private int maxShotDelay = 100;
+    private int maxShotDelay = 130;
     private int shotTimer = minShotDelay;
     /**
      * Create a prongd with default size and random direction of movement.
@@ -72,23 +72,12 @@ public class Prong extends SmoothMover
         }
         else shotTimer--;
     }
-        private void breakUp() 
-    {
-        Greenfoot.playSound("Explosion.wav");
-        int r = getVelocity().getDirection() + Greenfoot.getRandomNumber(45);
-        double l = getVelocity().getLength();
-        Vector speed1 = new Vector(r + 60, l * 1.2);       
-        Spaceman a1 = new Spaceman(size/2, speed1);
-        getWorld().addObject(a1, getX(), getY());
-         a1.move();
-        getWorld().removeObject(this);
-        
-    }
       public void dead() 
     {
         if (stability <= 0) 
         {
-            breakUp();
+            Greenfoot.playSound("Explosion.wav");
+            getWorld().removeObject(this);
         }
         else
         {
