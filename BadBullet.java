@@ -1,14 +1,13 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class BadBullet here.
+ * The bullets Spaceman and Prongs fire at you
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @Zachary Chiu
  */
 public class BadBullet extends SmoothMover
 {
-    private static final int damage = 10000;
+    private static final int damage = 5;
 
     private int life = 30;
     /**
@@ -23,16 +22,6 @@ public class BadBullet extends SmoothMover
         else {
             life--;
             move(15);
-            checkAlienHit();
         }
-    }    
-
-    private void checkAlienHit()
-    {
-        Alien alien = (Alien) getOneIntersectingObject(Alien.class);
-        if (alien != null)
-        { 
-            getWorld().removeObject(this);
-          }
-    }
+    }   
 }

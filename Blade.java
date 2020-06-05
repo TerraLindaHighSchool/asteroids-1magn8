@@ -1,7 +1,6 @@
-import greenfoot.*;
-
+    import greenfoot.*;
 /**
- * A rock in space.
+ * An enemy ship
  * 
  * @author Zachary Chiu
  */
@@ -9,13 +8,12 @@ public class Blade extends SmoothMover
 {
     /** Size of this asteroid */
     private int size;
-
     /** When the stability reaches 0 the asteroid will explode */
     private int stability;
     private GreenfootImage Spaceman = new GreenfootImage ("Spaceman.png");
 
     /**
-     * Create an asteroid with default size and random direction of movement.
+     * Create a blade with default size and random direction of movement.
      */
     public Blade()
     {
@@ -23,7 +21,7 @@ public class Blade extends SmoothMover
     }
     
     /**
-     * Create an asteroid with a given size and random direction of movement.
+     * Create a blade with a given size and random direction of movement.
      */
     public Blade(int size)
     {
@@ -32,33 +30,31 @@ public class Blade extends SmoothMover
     }
     
     /**
-     * Create an asteroid with a given size and direction of movement.
+     * Create a blade with a given size and direction of movement.
      */
     public Blade(int size, Vector velocity)
     {
         super(velocity);
         setSize(size);
     }
-    
     public void act()
     {         
         move();
     }
-
     /**
-     * Set the size of this asteroid. Note that stability is directly
-     * related to size. Smaller asteroids are less stable.
+     * Set the size of this blade. Note that stability is directly
+     * related to size. 
      */
     public void setSize(int size) 
     {
         stability = size;
         this.size = size;
         GreenfootImage image = getImage();
-        image.scale(size, size);
+         image.scale(20, 70);
     }
 
     /**
-     * Return the current stability of this asteroid. (If it goes down to 
+     * Return the current stability of this blade. (If it goes down to 
      * zero, it breaks up.)
      */
     public int getStability() 
@@ -67,7 +63,7 @@ public class Blade extends SmoothMover
     }
     
     /**
-     * Hit this asteroid dealing the given amount of damage.
+     * Hit this blade dealing the given amount of damage.
      */
     public void hit(int damage) 
     {
@@ -79,8 +75,8 @@ public class Blade extends SmoothMover
     }
     
     /**
-     * Break up this asteroid. If we are still big enough, this will create two
-     * smaller asteroids. If we are small already, just disappear.
+     * Break up this blade. If we are still big enough, this will create two
+     * smaller spacemen. If we are small already, just disappear.
      */
     private void breakUp() 
     {

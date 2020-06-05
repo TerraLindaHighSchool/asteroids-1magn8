@@ -4,8 +4,7 @@ import greenfoot.*;
  * The ScoreBoard is used to display results on the screen. It can display some
  * text and a score.
  * 
- * @author M Kölling
- * @version 1.1
+ * @Zachary Chiu
  */
 public class ScoreBoard extends Actor
 {
@@ -28,7 +27,6 @@ public class ScoreBoard extends Actor
     {
         makeImage("Game Over", "Score: ", score);
     }
-
     /**
      * Make the score board image.
      */

@@ -2,8 +2,8 @@
 import greenfoot.*;
 
 /**
- * A rocket that can be controlled by the arrowkeys: up, left, right.
- * The gun is fired by hitting the 'space' key. 'z' releases a proton wave.
+ * An alien that can be controlled by the arrowkeys: up, left, right.
+ * The gun is fired by hitting the 'space' key. 'x' releases a proton wave.
  * 
  * @author Zachary Chiu
  * 
@@ -16,7 +16,7 @@ public class Alien extends SmoothMover
     private int reloadDelayCount;               // How long ago we fired the gun the last time.
     private int protonDelayCount;
     private int waveCount;
-    private int health = 3;
+ 
     
     private GreenfootImage Alien = new GreenfootImage("Alien.png");    
     private GreenfootImage Alienmove = new GreenfootImage("AlienMove.png");
@@ -107,7 +107,6 @@ public class Alien extends SmoothMover
             protonDelayCount = 4;
         }
     }
- 
     private void checkCollision()
     {
        if( getOneIntersectingObject(Blade.class) != null) 
@@ -126,18 +125,11 @@ public class Alien extends SmoothMover
     {
         if( getOneIntersectingObject(BadBullet.class) != null) 
         {
-           health--;
-        }
-    }
-    private void life()
-    {
-        if(health <1)
-        {
-            Space space = (Space) getWorld();
+           Space space = (Space) getWorld();
            space.addObject(new Explosion(),getX(),getY());
            space.removeObject(this);
            space.gameOver();
         }
     }
-
+ 
 }

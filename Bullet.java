@@ -1,14 +1,14 @@
 import greenfoot.*;
 
 /**
- * A bullet that can hit asteroids.
+ * A bullet that can hit enemies.
  * 
  * @author Zachary Chiu
  */
 public class Bullet extends SmoothMover
 {
     /** The damage this bullet will deal */
-    private static final int damage = 30;
+    private static final int damage = 20;
     
     /** A bullet looses one life each act, and will disappear when life = 0 */
     private int life = 30;
@@ -45,7 +45,7 @@ public class Bullet extends SmoothMover
             move();
             checkBladeHit();
         }
-    
+           
     }
     
     /**
@@ -59,19 +59,6 @@ public class Bullet extends SmoothMover
             ((Space)getWorld()).updateScore(10);
             getWorld().removeObject(this);
             blade.hit(damage);
-        }
-    }
-    /**
-     * Check whether we have hit a Spaceman
-     */
-    private void checkSpacemanHit()
-    {
-        Spaceman spaceman = (Spaceman) getOneIntersectingObject(Spaceman.class);
-        if (spaceman != null)
-        {
-            ((Space)getWorld()).updateScore(10);
-            getWorld().removeObject(this);
-            spaceman.hit(damage);
         }
     }
 }

@@ -10,7 +10,8 @@ public class Space extends World
 {
     private Counter scoreCounter;
     private int startBlades = 3;
-    private Counter healthCounter;
+    private int startProngs = 4;
+    private boolean hasAddedProng;
     /**
      * Create the space and all objects within it.
      */
@@ -25,17 +26,31 @@ public class Space extends World
         addObject(alien, getWidth()/2 + 100, getHeight()/2);
         
         addBlades(startBlades);
+       
         
+      
         scoreCounter = new Counter("Score: ");
         addObject(scoreCounter, 60, 780);
         
-        healthCounter = new Counter("Health: ");
-        addObject(healthCounter, 1000, 780);
         
         Explosion.initializeImages();
         ProtonWave.initializeImages();
         paintStars(300);
        
+    }
+    public void act()
+    {
+        if(getObjects(Blade.class).size() == 0 && 
+        getObjects(Spaceman.class).size() == 0 &&
+        getObjects(Prong.class).size() ==0)
+        {
+            win();
+        }
+        if(getObjects(Blade.class).size() == 1 && hasAddedProng == false)
+        {
+            addProng(startProngs);
+            hasAddedProng = true;
+        }
     }
     
     /**
@@ -66,7 +81,7 @@ public class Space extends World
         int size1 = 3 - Greenfoot.getRandomNumber(2);
         int size2 = 3 - Greenfoot.getRandomNumber(2);
         background.fillOval(x, y, size1, size2);
-    }
+         }
     }
     /**
      * This method is called when the game is over to display the final score.
@@ -79,19 +94,24 @@ public class Space extends World
         addObject(new ScoreBoard(currentScore),x,y);
      
     }
+    public void win()
+    {
+        int x=getWidth()/2;
+        int y=getHeight()/2;
+        int currentScore=scoreCounter.getValue();
+        addObject(new ScoreBoardVictory(currentScore),x,y);
+    }
     public void updateScore(int addToScore)
     {
         scoreCounter.add(addToScore);
     }
-    public void spawnProng(int score)
+    private void addProng(int count) 
     {
-        if (score >= 20)
-        {
-            int x = Greenfoot.getRandomNumber(getWidth());
-            int y = Greenfoot.getRandomNumber(getHeight());
-            addObject( new Prong(), x, y);
+        int x = Greenfoot.getRandomNumber(getWidth()*2);
+        int y = Greenfoot.getRandomNumber(getHeight()*2);
+        addObject(new Prong(), x, y);
+        addObject(new Prong(), x, y);
     }
-}
 }
 
 

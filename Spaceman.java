@@ -1,7 +1,7 @@
 import greenfoot.*;
 
 /**
- * A rock in space.
+ * An enemy who fires at you
  * 
  * @author Zachary Chiu
  */
@@ -46,7 +46,7 @@ public class Spaceman extends SmoothMover
     {         
         move();
         shootRandomly();
-        
+        dead();
     }
 
     /**
@@ -58,7 +58,7 @@ public class Spaceman extends SmoothMover
         stability = size;
         this.size = size;
         GreenfootImage image = getImage();
-        image.scale(size, size);
+        image.scale(15, 30);
     }
 
     /**
@@ -88,6 +88,16 @@ public class Spaceman extends SmoothMover
             shotTimer = minShotDelay+Greenfoot.getRandomNumber(1+maxShotDelay-minShotDelay);
         }
         else shotTimer--;
+    }
+    public void dead()
+    {
+        if( getOneIntersectingObject(Bullet.class) != null)  
+        {
+            ((Space)getWorld()).updateScore(10);
+            Greenfoot.playSound("Pain.mp3");
+            getWorld().removeObject(this);
+      
+        }
     }
 }
     
