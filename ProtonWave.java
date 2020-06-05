@@ -5,7 +5,7 @@ import java.util.List;
  * A proton wave that expands and destroys asteroids in its path.
  * 
  * @author Zachary Chiu
- * =
+ * 
  */
 public class ProtonWave extends Actor
 {

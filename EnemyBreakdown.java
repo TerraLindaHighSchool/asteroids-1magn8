@@ -1,10 +1,9 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class EnemyBreakdown here.
+ * Lettering for the breakdown of the enemy ships
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @Zachary Chiu
  */
 public class EnemyBreakdown extends Actor
 {

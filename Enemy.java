@@ -1,10 +1,9 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Enemy here.
+ * The enemy breakdown
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @Zachary Chiu
  */
 public class Enemy extends World
 {
@@ -15,14 +14,16 @@ public class Enemy extends World
      */
     public Enemy()
     {    
-         super(1150, 800, 1); 
-        prepare(); 
+       super(1150, 800, 1); 
+        prepare();
     }
-     private void prepare()
+
+    private void prepare()
     {
-        EnemyBreakdown enemybreakdown = new EnemyBreakdown();
-        addObject(enemybreakdown,575,400);
+        TitleLetters titleLetters = new TitleLetters();
+        addObject(titleLetters,575,400);
     }
+
      public void act()
     {
         if (Greenfoot.isKeyDown("enter"))
